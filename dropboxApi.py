@@ -15,6 +15,7 @@ class GetCompleteDropBoxInfo(object):
         self.team_management_token = token["team_management_token"]
 
     def get_team_files(self):
+        # some debugging prints
         print("A<--------------------------------------------------------------->A")
         url = f"{BASE_URL}/files/list_folder"
         param = {
@@ -48,6 +49,7 @@ class GetCompleteDropBoxInfo(object):
             except Exception as e:
                 return
     def get_shared_files(self):
+        # some debugging prints
         print("B<------------------------------------------------------------------------------------------->B")
         response = requests.post(f"{BASE_URL}/team/members/list",
         data = json.dumps({
@@ -89,6 +91,7 @@ class GetCompleteDropBoxInfo(object):
                 return
     
     def get_member_files(self):
+        # some debugging prints
         print("C<-------------------------------------------------------------------------------------------------->C")
         response = requests.post(f"{BASE_URL}/team/members/list",
         data = json.dumps({
@@ -147,18 +150,10 @@ class GetCompleteDropBoxInfo(object):
 
 fetch_data = GetCompleteDropBoxInfo(
     {
-    "access_token" : "ah9COhuernAAAAAAAAAAP88eK7JEgJZWu-oqJ-aqhup_Pm6L0wDejQus1afxliK8",
-    "team_management_token" : "ah9COhuernAAAAAAAAAAQpa5iNdZix5JBne2NMXBbhq8viDHLHPAwEUgaF9QndVf"
+    "access_token" : "<Your Access Token Here>",
+    "team_management_token" : "<Your Team Managemant Token Here>"
 }
 )
-
-# content = fetch_data.get_team_files()
-# for data in content:
-#     for index, entry in enumerate(data["entries"]):
-#         print()
-
-# for data in fetch_data:
-    # pprint(data)
 
 
 
@@ -167,10 +162,7 @@ tasks = [fetch_data.get_member_files,fetch_data.get_team_files,fetch_data.get_sh
 def call_task(function):
     return function()
 
-# def get_complete_files(queue):
-    
-#     function = queue.get()
-#     yield from function()
+
 start = time.time()
 with ThreadPoolExecutor(max_workers = 8) as executor:
     future_to_task = { executor.submit(call_task , task) : task for task in tasks }
