@@ -151,7 +151,7 @@ class GetCompleteDropBoxInfo(object):
 fetch_data = GetCompleteDropBoxInfo(
     {
     "access_token" : "<Your Access Token Here>",
-    "team_management_token" : "<Your Team Managemant Token Here>"
+    "team_management_token" : "<Your Team Management Token Here>"
 }
 )
 
