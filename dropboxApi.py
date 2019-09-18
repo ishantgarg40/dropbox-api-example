@@ -29,10 +29,10 @@ class GetCompleteDropBoxInfo(object):
                     headers = {
                     "Content-Type" : "application/json",
                     "Authorization" : f"Bearer {self.access_token}",
-                    "Dropbox-API-Select-Admin" : 'dbmid:AAA9e41n7iJALbwB_X8NOp7cx4t3M2xfjLs',
+                    "Dropbox-API-Select-Admin" : "<ADMIN ID HERE>",
                     "Dropbox-API-Path-Root" : json.dumps({
                         ".tag" : "root",
-                        "root" : "6203474896"
+                        "root" : "<ROOT ID HERE>"
                     })
                     },
                     data = json.dumps(param)
