@@ -170,7 +170,7 @@ with ThreadPoolExecutor(max_workers = 8) as executor:
         data = future_to_task[future]
         try:
             for i in future.result():
-                pass
+                pprint(i)
         except Exception as e:
             pprint(e)
 end = time.time()
